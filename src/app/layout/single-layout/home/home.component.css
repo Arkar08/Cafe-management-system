@@ -1,0 +1,23 @@
+.mat-toolbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+}
+.mat-nav-list{
+    display: flex;
+    padding:0px 50px;
+}
+.mat-list-item{
+    font-size: 20px;
+    color: white;
+}
+button{
+    font-size: 20px;
+    margin-right: 10px;
+}
+img{
+    object-fit: contain;
+    width: 100%;
+    object-position: center;
+}

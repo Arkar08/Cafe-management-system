@@ -1,0 +1,11 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mat-card-content{
+    font-weight: bold;
+}
+.middle{
+    margin-top: 30px;
+}

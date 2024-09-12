@@ -1,0 +1,35 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mat-card-content{
+    font-weight: bold;
+}
+.middle{
+    margin-top: 30px;
+}
+.mat-form-field{
+    width: 100%;
+
+    input{
+        padding: 0px 10px;
+    }
+}
+table{
+    width: 100%;
+    margin-top: 30px;
+}
+.material-symbols-outlined{
+    cursor: pointer;
+    padding-right: 10px;
+    font-size: 30px;
+}
+.delete{
+    margin-left: 20px;
+}
+.toggle{
+    font-size: 40px;
+    margin-left: 30px;
+    margin-top: 10px;
+}

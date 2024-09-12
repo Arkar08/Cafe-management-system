@@ -1,0 +1,38 @@
+<mat-card class="header">
+    <mat-card-content>Manage Order</mat-card-content>
+    <button mat-raised-button color="primary">Submit & Get Bill</button>
+</mat-card>
+<mat-card class="middle">
+    <mat-card-content>Customer Details</mat-card-content>
+    <mat-grid-list cols="4" rowHeight="fit" style="height: 100px;">
+        <mat-grid-tile>
+            <mat-form-field>
+                <mat-label>Name*</mat-label>
+                <input type="text" matInput>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field>
+                <mat-label>Email*</mat-label>
+                <input type="email" matInput>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field>
+                <mat-label>Contact Number*</mat-label>
+                <input type="tel" matInput>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field>
+                <mat-label>Favorite food</mat-label>
+                <mat-select >
+                    <mat-option value="cash">Cash</mat-option>
+                    <mat-option value="credit card">Credit Card</mat-option>
+                    <mat-option value="bank card">Bank Card</mat-option>
+                </mat-select>
+              </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+</mat-card>

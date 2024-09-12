@@ -1,0 +1,40 @@
+
+    <mat-card appearance="outlined">
+        <mat-card-content>Dashboard</mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-grid-list cols="3" rowHeight="fit" style="height: 150px;" gutterSize="20px">
+            <mat-grid-tile>
+                <div class="main">
+                    <mat-card-title>
+                        Total Category:
+                    </mat-card-title>
+                    <mat-card-title>
+                            5
+                    </mat-card-title>
+                    <button mat-raised-button color="primary"  style="width: 100%; " (click)="category()">View Category</button>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="main">
+                    <mat-card-title>
+                        Total Product:
+                    </mat-card-title>
+                    <mat-card-title>
+                            18
+                    </mat-card-title>
+                    <button mat-raised-button  color="primary" style="width: 100%;" (click)="product()">View Product</button>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="main">
+                    <mat-card-title>
+                        Total Bill:
+                    </mat-card-title>
+                    <mat-card-title>
+                            5
+                    </mat-card-title>
+                    <button mat-raised-button color="primary" style="width: 100%;">View Bill</button>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card>
