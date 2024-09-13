@@ -11,4 +11,7 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  displayedColumns: string[] = ['name','category','price','quantity','total','delete'];
+  // dataSource = ELEMENT_DATA;
 }

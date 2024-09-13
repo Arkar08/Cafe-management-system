@@ -13,6 +13,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 export const materialComponent=[
   MatButtonModule,
@@ -27,7 +28,8 @@ export const materialComponent=[
   MatCardModule,
   MatGridListModule,
   MatTableModule,
-  MatSelectModule
+  MatSelectModule,
+  MatPaginatorModule
 ]
 
 

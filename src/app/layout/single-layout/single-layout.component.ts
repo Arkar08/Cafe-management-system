@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ChangePasswordComponent } from 'src/app/components/change-password/change-password.component';
 
 @Component({
   selector: 'app-single-layout',
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class SingleLayoutComponent implements OnInit {
   open:boolean = true;
 
-  constructor() { }
+  constructor(private dialog:MatDialog,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,4 +20,13 @@ export class SingleLayoutComponent implements OnInit {
     this.open = ! this.open
   }
 
+  change(){
+    this.dialog.open(ChangePasswordComponent,{
+      width: '500px',
+    })
+  }
+  logout(){
+    console.log('hello')
+    this.router.navigate(['/'])
+  }
 }

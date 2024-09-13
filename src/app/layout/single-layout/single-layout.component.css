@@ -2,13 +2,14 @@
     width: 18%;
 }
 .mat-drawer-container{
-    height: 90%;
+    height: 92%;
 }
 .mat-toolbar{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding:0px 50px;
+    height: 8%;
 }
 .circle{
     font-size: 40px;

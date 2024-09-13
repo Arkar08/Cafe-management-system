@@ -1,1 +1,43 @@
-<p>users works!</p>
+<mat-card class="header">
+    <mat-card-content>View Customers</mat-card-content>
+</mat-card>
+<mat-card class="middle">
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput type="text" (keyup)="applyFilter($event)">
+    </mat-form-field>
+</mat-card>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+   
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="contact">
+        <th mat-header-cell *matHeaderCellDef> Contact Number </th>
+        <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element"> 
+            <mat-icon  color="primary">
+                <span class="material-symbols-outlined">
+                    toggle_on
+                </span>
+            </mat-icon>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>

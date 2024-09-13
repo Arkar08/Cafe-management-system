@@ -4,8 +4,27 @@
     align-items: center;
 }
 .mat-card-content{
-    font-weight: bold;
+    font-size: 18px;
+    font-weight: 600;
 }
 .middle{
     margin-top: 30px;
+}
+.mat-form-field{
+    width: 100%;
+    margin-right: 20px;
+    
+    input{
+        padding: 0px 10px;
+    }
+}
+.mat-card-actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px;
+}
+table{
+    margin-top: 30px;
+    width: 100%;
 }

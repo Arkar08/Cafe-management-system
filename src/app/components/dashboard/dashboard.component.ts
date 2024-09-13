@@ -20,4 +20,7 @@ export class DashboardComponent implements OnInit {
   product(){
     this.route.navigate(['cafe/product'])
   }
+  bill(){
+    this.route.navigate(['cafe/bill'])
+  }
 }
