@@ -28,3 +28,16 @@ table{
 .delete{
     margin:0px 20px;
 }
+th.mat-header-cell {
+    text-align: center;
+}
+.mat-header-cell {
+    font-size: 15px;
+    font-weight: 500;
+}
+tr{
+    text-align: center;
+}
+.toggle{
+    font-size: 35px;
+}

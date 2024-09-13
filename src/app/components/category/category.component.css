@@ -24,3 +24,13 @@ table{
 .material-symbols-outlined{
     cursor: pointer;
 }
+th.mat-header-cell {
+    text-align: center;
+}
+.mat-header-cell {
+    font-size: 15px;
+    font-weight: 500;
+}
+tr{
+    text-align: center;
+}

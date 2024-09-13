@@ -27,3 +27,13 @@ table{
 .mat-icon{
     font-size: 40px;
 }
+th.mat-header-cell {
+    text-align: center;
+}
+.mat-header-cell {
+    font-size: 15px;
+    font-weight: 500;
+}
+tr{
+    text-align: center;
+}
