@@ -36,8 +36,8 @@ export class CategoryComponent implements OnInit  {
 
   constructor(private dialog:MatDialog) { }
 
+
   ngOnInit(): void {
-    
   }
   displayedColumns: string[] = ['name','action'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
