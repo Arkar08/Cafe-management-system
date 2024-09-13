@@ -27,6 +27,7 @@ export class SingleLayoutComponent implements OnInit {
   }
   logout(){
     console.log('hello')
+    alert('log out successfully')
     this.router.navigate(['/'])
   }
 }
