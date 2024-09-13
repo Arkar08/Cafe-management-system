@@ -33,7 +33,7 @@
         <mat-error *ngIf="productForm.controls?.['description']?.touched">This is required</mat-error>
     </mat-form-field>
     <mat-dialog-actions align="center">
-        <button mat-raised-button mat-dialog-close="close" type="submit">Add</button>
+        <button mat-raised-button mat-dialog-close="close" type="submit" [disabled]="!productForm.valid">Add</button>
         <button mat-raised-button mat-dialog-close="close" color="primary">Close</button>
     </mat-dialog-actions>
 </form>
