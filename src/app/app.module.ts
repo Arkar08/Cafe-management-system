@@ -20,6 +20,12 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { CreateCategoryComponent } from './components/create-category/create-category.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './service/auth.service';
+import { environment } from 'src/environments/environment.prod';
+import {AngularFireModule} from '@angular/fire/compat'
+import { UserService } from './service/user.service';
+import { CategoryService } from './service/category.service';
+import { ProductService } from './service/product.service';
 
 @NgModule({
   declarations: [
@@ -44,9 +50,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [],
+  providers: [AuthService,UserService,CategoryService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

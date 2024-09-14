@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { UserService } from 'src/app/service/user.service';
 
 
 export interface category{
@@ -7,33 +8,6 @@ export interface category{
   email:string,
   contact:number,
 }
-const ELEMENT_DATA: category[] = [
-  {
-    name:'coffee',
-    email:'sdfdsaf@gmai.com',
-    contact:12344556
-  },
-  {
-    name:'coffee',
-    email:'sdfdsaf@gmai.com',
-    contact:12344556
-  },
-  {
-    name:'coffee',
-    email:'sdfdsaf@gmai.com',
-    contact:12344556
-  },
-  {
-    name:'coffee',
-    email:'sdfdsaf@gmai.com',
-    contact:12344556
-  },
-  {
-    name:'coffee',
-    email:'sdfdsaf@gmai.com',
-    contact:12344556
-  },
-]
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -41,17 +15,28 @@ const ELEMENT_DATA: category[] = [
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    this.getUser();
   }
 
 
   displayedColumns: string[] = ['name','email','contact','action'];
-  dataSource =new MatTableDataSource(ELEMENT_DATA);
+  dataSource =new MatTableDataSource();
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getUser(){
+    this.userService.getUser().subscribe((res:any)=>{
+      this.dataSource = res.map((r:any)=>{
+        const data = r.payload.doc.data();
+        data.id = r.payload.doc.id;
+        return data;
+      })
+    })
   }
 }

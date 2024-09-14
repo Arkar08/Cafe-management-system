@@ -14,6 +14,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
 import {MatSelectModule} from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 export const materialComponent=[
   MatButtonModule,
@@ -29,7 +30,8 @@ export const materialComponent=[
   MatGridListModule,
   MatTableModule,
   MatSelectModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatAutocompleteModule,
 ]
 
 

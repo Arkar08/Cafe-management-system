@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,19 +13,19 @@ export class SignupComponent implements OnInit {
 
   signUpForm:FormGroup = new FormGroup(
     {
-      userName:new FormControl('',Validators.required),
+      name:new FormControl('',Validators.required),
+      email:new FormControl('',Validators.required),
       password:new FormControl('',Validators.required),
-      contact:new FormControl('09',Validators.required)
+      contact:new FormControl('',Validators.required)
     }
   )
-  constructor(private route:Router) { }
+  constructor(private route:Router ,private auth:AuthService) { }
 
   ngOnInit(): void {
   }
 
   signUp(){
-    alert('signUp successfully');
     console.log(this.signUpForm.value)
-    this.route.navigate(['/cafe/dashboard'])
+    this.auth.register(this.signUpForm.value)
   }
 }

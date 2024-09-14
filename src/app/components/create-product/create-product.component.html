@@ -18,10 +18,10 @@
         <mat-grid-tile>
             <mat-form-field>
                 <mat-label>Category</mat-label>
-                <mat-select formControlName="category">
-                    <mat-option value="cash">Cash</mat-option>
-                    <mat-option value="credit card">Credit Card</mat-option>
-                    <mat-option value="bank card">Bank Card</mat-option>
+                <mat-select formControlName="category" [disabled]="categoryList.length === 0">
+                    <mat-option *ngFor="let cate of categoryList;index as i" [value]="cate.name" >
+                        {{cate.name}}
+                    </mat-option>
                 </mat-select>
                 <mat-error *ngIf="productForm.controls?.['category']?.touched">This is required</mat-error>
             </mat-form-field>

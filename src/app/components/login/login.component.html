@@ -3,9 +3,9 @@
 </mat-toolbar>
 <form [formGroup]="loginForms" (submit)="login()">
     <mat-form-field>
-        <mat-label>User Name</mat-label>
-        <input matInput type="text" formControlName="userName">
-        <mat-error *ngIf="loginForms.controls?.['userName']?.touched">This is Required.</mat-error>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email">
+        <mat-error *ngIf="loginForms.controls?.['email']?.touched">This is Required.</mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label >Password</mat-label>

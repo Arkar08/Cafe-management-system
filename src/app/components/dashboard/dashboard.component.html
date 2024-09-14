@@ -9,7 +9,7 @@
                         Total Category:
                     </mat-card-title>
                     <mat-card-title>
-                            5
+                        {{categoryCount || 0}}
                     </mat-card-title>
                     <button mat-raised-button color="primary"  style="width: 100%; " (click)="category()">View Category</button>
                 </div>
@@ -20,7 +20,7 @@
                         Total Product:
                     </mat-card-title>
                     <mat-card-title>
-                            18
+                            {{productCount || 0}}
                     </mat-card-title>
                     <button mat-raised-button  color="primary" style="width: 100%;" (click)="product()">View Product</button>
                 </div>

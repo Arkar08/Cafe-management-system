@@ -3,9 +3,14 @@
 </mat-toolbar>
 <form [formGroup]="signUpForm" (submit)="signUp()">
     <mat-form-field>
-        <mat-label>User Name</mat-label>
-        <input matInput type="text" formControlName="userName">
-        <mat-error *ngIf="signUpForm.controls?.['userName']?.touched">This is Required.</mat-error>
+        <mat-label>Name</mat-label>
+        <input matInput type="name" formControlName="name">
+        <mat-error *ngIf="signUpForm.controls?.['name']?.touched">This is Required.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-error *ngIf="signUpForm.controls?.['email']?.touched">This is Required.</mat-error>
     </mat-form-field>
     <mat-form-field>
         <mat-label >Password</mat-label>

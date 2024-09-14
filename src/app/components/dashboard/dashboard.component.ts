@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/service/category.service';
+import { ProductService } from 'src/app/service/product.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,13 +9,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  constructor(private route:Router) { }
+  productCount:any;
+  categoryCount:any;
+  constructor(private route:Router,private productService:ProductService ,private categoryService:CategoryService) { }
 
   ngOnInit(): void {
+    this.getProduct();
+    this.getCategory();
   }
 
-
+  getProduct(){
+    this.productService.getProduct().subscribe((res:any)=>{
+      this.productCount = res.length;
+    })
+  }
+  getCategory(){
+    this.categoryService.getCategory().subscribe((res:any)=>{
+      this.categoryCount = res.length;
+    })
+  }
   category(){
     this.route.navigate(['cafe/category'])
   }
