@@ -40,3 +40,6 @@ tr{
 .toggle{
     font-size: 35px;
 }
+.mat-cell{
+    text-transform: capitalize;
+}

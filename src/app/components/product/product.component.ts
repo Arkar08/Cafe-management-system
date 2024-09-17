@@ -11,8 +11,6 @@ export interface category{
   price:number
 }
 
-
-
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -25,8 +23,8 @@ export class ProductComponent implements OnInit {
   constructor(private dialog:MatDialog, private productService:ProductService , private categoryService:CategoryService) { }
 
   ngOnInit(): void {
-    this.getProduct();
     this.getCategory();
+      this.getProduct();
   }
   displayedColumns: string[] = ['name','category','description','price','action'];
   dataSource = new  MatTableDataSource<any>();
@@ -36,17 +34,29 @@ export class ProductComponent implements OnInit {
       width:'800px'
     })
   }
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
   getProduct(){
     this.productService.getProduct().subscribe((res:any)=>{
       this.products = res.map((r:any)=>{
         const data = r.payload.doc.data();
         data.id = r.payload.doc.id;
         return data;
+        
       })
+      this.products.map((p:any)=>{
+        this.category.filter((c:any)=>{
+          if(p.category === c.id){
+              p.category = c.name
+          }
+        })
+      })
+
+
     })
   }
 
@@ -59,5 +69,6 @@ export class ProductComponent implements OnInit {
       })
     })
   }
+
 
 }

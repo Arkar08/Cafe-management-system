@@ -39,7 +39,7 @@ export const materialComponent=[
   declarations: [],
   imports: [
     CommonModule,
-    materialComponent
+    materialComponent,
   ],
   exports:[materialComponent]
 })

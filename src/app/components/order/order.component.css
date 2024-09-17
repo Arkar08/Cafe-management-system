@@ -37,3 +37,13 @@ th.mat-header-cell {
 tr{
     text-align: center;
 }
+select2{
+    width: 100%;
+    height:100%;
+}
+.icon{
+    cursor: pointer;
+}
+.mat-cell{
+    text-transform: capitalize;
+}

@@ -1,39 +1,41 @@
 <mat-card class="header">
     <mat-card-content>Manage Order</mat-card-content>
-    <button mat-raised-button color="primary" (click)="getBill()">Submit & Get Bill</button>
+    <button mat-raised-button color="primary" (click)="getBill()" [disabled]=" choice">Submit & Get Bill</button>
 </mat-card>
 <mat-card class="middle">
     <mat-card-content>Customer Details</mat-card-content>
-    <mat-grid-list cols="4" rowHeight="fit" style="height: 100px;">
-            <mat-grid-tile>
-                <mat-form-field>
-                    <mat-label>Name*</mat-label>
-                    <input type="text" matInput>
-                </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <mat-form-field>
-                    <mat-label>Email*</mat-label>
-                    <input type="email" matInput>
-                </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <mat-form-field>
-                    <mat-label>Contact Number*</mat-label>
-                    <input type="tel" matInput>
-                </mat-form-field>
-            </mat-grid-tile>
-            <mat-grid-tile>
-                <mat-form-field>
-                    <mat-label>Payment Method</mat-label>
-                    <mat-select >
-                        <mat-option value="cash">Cash</mat-option>
-                        <mat-option value="credit card">Credit Card</mat-option>
-                        <mat-option value="bank card">Bank Card</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </mat-grid-tile>
-    </mat-grid-list>
+        <mat-grid-list cols="4" rowHeight="fit" style="height: 100px;">
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Name</mat-label>
+                        <mat-select name="name" ngModel="name" (ngModelChange)="onChange($event)">
+                            <mat-option [value]="user.name" *ngFor="let user of users">{{user.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Email*</mat-label>
+                        <input type="email" matInput name="email" [value]="filter?.email" [disabled]="filter?.email">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Contact Number*</mat-label>
+                        <input type="tel" matInput name="contact" [value]="filter?.contact" [disabled]="filter?.contact">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field>
+                        <mat-label>Payment Method</mat-label>
+                        <mat-select (selectionChange)="select($event)">
+                            <mat-option value="cash">Cash</mat-option>
+                            <mat-option value="credit card">Credit Card</mat-option>
+                            <mat-option value="bank card">Bank Card</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+        </mat-grid-list>
 
 </mat-card>
 
@@ -42,82 +44,78 @@
     <mat-grid-list cols="5" rowHeight="fit" style="height: 100px;">
         <mat-grid-tile>
             <mat-form-field>
-                <mat-label>Category</mat-label>
-                <mat-select>
-                    <mat-option *ngFor="let category of categories" [value]="category.name">{{category.name}}</mat-option>
+                <mat-label>Product</mat-label>
+                <mat-select name="product" ngModel="category" (ngModelChange)="onCategoryChange($event)">
+                    <mat-option *ngFor="let product of products" [value]="product.name">{{product.name}}</mat-option>
                 </mat-select>
               </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
             <mat-form-field>
-                <mat-label>Product</mat-label>
-                <mat-select >
-                    <mat-option value="cash">Cash</mat-option>
-                    <mat-option value="credit card">Credit Card</mat-option>
-                    <mat-option value="bank card">Bank Card</mat-option>
-                </mat-select>
-              </mat-form-field>
+                <mat-label>Category</mat-label>
+                <input type="text" matInput [value]="filterCategory?.category" [disabled]="filterCategory?.category">
+            </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
             <mat-form-field>
                 <mat-label>Price*</mat-label>
-                <input type="text" matInput>
+                <input type="number" matInput [value]="filterCategory?.price" [disabled]="filterCategory?.price">
             </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
             <mat-form-field>
                 <mat-label>Quantity*</mat-label>
-                <input type="number" matInput>
+                <input type="number" matInput [value]="filterCategory?.qty" (keyup)="change($event)">
             </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>
             <mat-form-field>
                 <mat-label>Total</mat-label>
-                <input type="number" matInput value="0">
+                <input type="number" matInput [value]="total">
             </mat-form-field>
         </mat-grid-tile>
     </mat-grid-list>
     <mat-card-actions>
-        <button mat-raised-button>Add</button>
-        <button mat-raised-button color="primary">Total Amount : 0</button>
+        <button mat-raised-button (click)="add()" [disabled]="active">Add</button>
+        <button mat-raised-button color="primary">Total Amount : {{totalAmount || 0}}</button>
     </mat-card-actions>
 </mat-card>
 
-<table mat-table  class="mat-elevation-z8">
+<table mat-table  class="mat-elevation-z8" [dataSource]="dataSource">
    
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-cell *matCellDef="let product"> {{product.name}} </td>
     </ng-container>
     <ng-container matColumnDef="category">
         <th mat-header-cell *matHeaderCellDef> Category </th>
-        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+        <td mat-cell *matCellDef="let product"> {{product.category}} </td>
       </ng-container>
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef> Price </th>
-        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        <td mat-cell *matCellDef="let product"> {{product.price}} </td>
       </ng-container>
       <ng-container matColumnDef="quantity">
         <th mat-header-cell *matHeaderCellDef> Quantity </th>
-        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+        <td mat-cell *matCellDef="let product"> {{product.qty}} </td>
       </ng-container>
       <ng-container matColumnDef="total">
         <th mat-header-cell *matHeaderCellDef> Total </th>
-        <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+        <td mat-cell *matCellDef="let product"> {{product.totalAmount}} </td>
       </ng-container>
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef> Delete </th>
-      <td mat-cell *matCellDef="let element"> 
-          <mat-icon color="primary">
-              <span class="material-symbols-outlined">
-                    delete
-              </span>
-          </mat-icon>
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> Delete </th>
+            <td mat-cell *matCellDef="let product"> 
+                <mat-icon color="primary" class="icon">
+                    <span class="material-symbols-outlined" (click)="delete(product)">
+                            delete
+                    </span>
+                </mat-icon>
+            </td>
+      </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 <mat-paginator [length]="100"
               [pageSize]="10"

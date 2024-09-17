@@ -26,6 +26,8 @@ import {AngularFireModule} from '@angular/fire/compat'
 import { UserService } from './service/user.service';
 import { CategoryService } from './service/category.service';
 import { ProductService } from './service/product.service';
+import { Select2Module } from 'ng-select2-component';
+import { BillService } from './service/bill.service';
 
 @NgModule({
   declarations: [
@@ -52,8 +54,9 @@ import { ProductService } from './service/product.service';
     MaterialModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    Select2Module,
   ],
-  providers: [AuthService,UserService,CategoryService,ProductService],
+  providers: [AuthService,UserService,CategoryService,ProductService,BillService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

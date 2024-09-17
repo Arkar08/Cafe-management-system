@@ -33,3 +33,6 @@ th.mat-header-cell {
 tr{
     text-align: center;
 }
+.mat-cell{
+    text-transform: capitalize;
+}
